@@ -12,7 +12,11 @@ namespace SMS_ON_INCIDENT_CREATED
                 while (true)
                 {
                     // Get the messages
-                    var response = client.ReceiveMessage(queueUrl);
+                    var request = new Amazon.SQS.Model.ReceiveMessageRequest(queueUrl)
+                    {
+                        WaitTimeSeconds = 20
+                    };
+                    var response = client.ReceiveMessage(request);
 
                     // Check our response
                     if (response.Messages.Count > 0)
