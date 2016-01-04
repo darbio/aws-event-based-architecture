@@ -12,10 +12,7 @@ namespace CACHE_ON_INCIDENT_ALL
                 while (true)
                 {
                     // Get the messages
-                    var request = new Amazon.SQS.Model.ReceiveMessageRequest(queueUrl)
-                    {
-                        WaitTimeSeconds = 20
-                    };
+                    var request = new Amazon.SQS.Model.ReceiveMessageRequest(queueUrl);
                     var response = client.ReceiveMessage(request);
 
                     // Check our response
